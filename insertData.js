@@ -6,6 +6,11 @@ import { Branch, Category, Service, Worker } from "./src/models/model.js";
 const insertData = async () => {
   await connectDB();
 
+  await Category.deleteMany({});
+  await Service.deleteMany({});
+  await Branch.deleteMany({});
+  await Worker.deleteMany();
+
   try {
     // Insert Categories
     const categories = await Category.insertMany([
